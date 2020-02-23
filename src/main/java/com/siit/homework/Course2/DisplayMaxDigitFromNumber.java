@@ -7,7 +7,7 @@ public class DisplayMaxDigitFromNumber {
     public static void main(String[] args) {
         int number;
         int digit = 0;
-        int r;
+        int result;
         int defaultNumber;
 
         Scanner scanner = new Scanner(System.in);
@@ -17,10 +17,10 @@ public class DisplayMaxDigitFromNumber {
 
 
         while (number > 0) {
-            r = number % 10;
+            result = number % 10;
 
-            if (digit < r) {
-                digit = r;
+            if (digit < result) {
+                digit = result;
             }
 
             number = number / 10;

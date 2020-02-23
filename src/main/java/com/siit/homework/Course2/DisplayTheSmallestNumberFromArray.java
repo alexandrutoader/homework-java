@@ -1,6 +1,5 @@
 package com.siit.homework.Course2;
 
-import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class DisplayTheSmallestNumberFromArray {
