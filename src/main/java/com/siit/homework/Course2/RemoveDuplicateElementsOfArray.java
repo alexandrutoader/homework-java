@@ -34,10 +34,17 @@ public class RemoveDuplicateElementsOfArray {
         }
 
         int[] arrayWithUniqueElements = Arrays.copyOf(numbers, numbersLength);
-        System.out.println("List elements of array after removing duplicates : ");
+        System.out.println("\nOriginal array : ");
+        for (int value : numbers) {
+            System.out.print(value + "\t");
+        }
+
+        System.out.println("\n\nList elements of array after removing duplicates : ");
 
         for (int value : arrayWithUniqueElements) {
             System.out.print(value + "\t");
         }
+
+        System.out.println("\n");
     }
 }
