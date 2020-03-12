@@ -21,6 +21,10 @@ public class Pos {
         this.amount = amount;
         String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+        if (bankAccounts.isEmpty()) {
+            throw new Exception("No bank account found!");
+        }
         for (BankAccount account:bankAccounts) {
             for (Card accountCard: account.getAttachedCardNumber()) {
                 if (sdf.parse(timeStamp).after(sdf.parse(accountCard.getExpirationDate()))) {
