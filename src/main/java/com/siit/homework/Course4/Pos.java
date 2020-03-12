@@ -22,8 +22,7 @@ public class Pos {
             }
         }
 
-        String receipt =  "Thank you for your payment! Please take your receipt!";
-        return receipt;
+        return "Thank you for your payment! Please take your receipt!";
     }
 
     public long getAmount() {

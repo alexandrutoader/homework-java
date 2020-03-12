@@ -32,8 +32,9 @@ public class TransactionService {
             Pos pos = new Pos();
             pos.addKnownBankAccounts(account);
             System.out.println("Pay at pos:");
-            pos.pay(380,card);
+            String receipt = pos.pay(380,card);
             System.out.println(pos.getAmount() + " payed at pos.");
+            System.out.println(receipt + "\n");
 
             for (BankAccount clientAccount: customer.getBankAccounts()) {
                 long money = clientAccount.getBalance();
