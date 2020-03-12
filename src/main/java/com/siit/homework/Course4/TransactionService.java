@@ -14,21 +14,21 @@ public class TransactionService {
         customer.addCard(card);
 
         try {
-            //Action for add money on customer1 accountForCustomer1.
+            //Action for add money on customer account.
             for (BankAccount customerAccount: customer.getBankAccounts()) {
                 customerAccount.addMoney(700);
                 System.out.println("Card amount: " + customerAccount.getBalance());
             }
 
-            //Action for withdraw money from customerAccount.
-            for (BankAccount clientAccount: customer.getBankAccounts()) {
-                clientAccount.withdrawMoney(200);
+            //Action for withdraw money from customer account.
+            for (BankAccount customerAccount: customer.getBankAccounts()) {
+                customerAccount.withdrawMoney(200);
 
-                long money = clientAccount.getBalance();
+                long money = customerAccount.getBalance();
                 System.out.println("Sold after withdraw = " + money + "\n");
             }
 
-            //Pay at POS with cardForCustomer1.
+            //Pay at POS with card.
             Pos pos = new Pos();
             pos.addKnownBankAccounts(account);
             System.out.println("Pay at pos:");
@@ -36,8 +36,8 @@ public class TransactionService {
             System.out.println(pos.getAmount() + " payed at pos.");
             System.out.println(receipt + "\n");
 
-            for (BankAccount clientAccount: customer.getBankAccounts()) {
-                long money = clientAccount.getBalance();
+            for (BankAccount customerAccount: customer.getBankAccounts()) {
+                long money = customerAccount.getBalance();
 
                 System.out.println("Sold after pay = " + money);
             }
