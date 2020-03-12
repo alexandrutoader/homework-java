@@ -1,4 +1,4 @@
-package com.siit.homework.Course4;
+package com.siit.homework.Course4.bank;
 
 public class Card {
     private String expirationDate;

@@ -1,4 +1,4 @@
-package com.siit.homework.Course4;
+package com.siit.homework.Course4.bank;
 
 public class TransactionService {
     public static void main(String[] args) throws Exception {

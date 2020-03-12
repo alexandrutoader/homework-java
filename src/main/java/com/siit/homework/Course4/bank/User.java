@@ -1,4 +1,4 @@
-package com.siit.homework.Course4;
+package com.siit.homework.Course4.bank;
 
 import java.util.ArrayList;
 import java.util.List;
