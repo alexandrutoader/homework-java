@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
-    private String name;
-    private int pages;
-    private String type;
     private List<Novel>attachedNovel;
     private List<Album>attachedAlbum;
 
@@ -31,6 +28,27 @@ public class Book {
         this.attachedAlbum.remove(album);
     }
 
+    public void deleteBookByName(Book book, String bookName) {
+        for (Album album1:this.getAttachedAlbum()) {
+            if (album1.getName().equals(bookName)) {
+                book.deleteAlbum(album1);
+                return;
+            }
+        }
+
+        for (Novel novel:book.getAttachedNovel()) {
+            if (novel.getName().equals(bookName)) {
+                book.deleteNovel(novel);
+                return;
+            }
+        }
+    }
+
+    public void deleteBooks(Book books) {
+        this.attachedNovel.removeAll(books.getAttachedNovel());
+        this.attachedAlbum.removeAll(books.getAttachedAlbum());
+    }
+
     public void listBooks() {
         if (!this.getAttachedNovel().isEmpty()) {
             System.out.println("\nNovels:");
@@ -51,30 +69,10 @@ public class Book {
             System.out.println("Number of pages: " + album.getPages());
             System.out.println("Paper quality: " + album.getPaperQuality() + "\n");
         }
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getPages() {
-        return pages;
-    }
-
-    public void setPages(int pages) {
-        this.pages = pages;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+        if (this.getAttachedAlbum().isEmpty() && this.getAttachedNovel().isEmpty()) {
+            System.out.println("No book found in the library!");
+        }
     }
 
     public List<Novel> getAttachedNovel() {
