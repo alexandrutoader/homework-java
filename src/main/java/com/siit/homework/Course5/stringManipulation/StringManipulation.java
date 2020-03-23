@@ -1,28 +1,28 @@
 package com.siit.homework.Course5.stringManipulation;
 
-import java.util.Scanner;
-
 public class StringManipulation {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a string:");
-        String string = scanner.next();
 
         System.out.println("\n1. Get string reversed:");
-        reverseGivenString(string);
+        reverseGivenString("java");
 
         System.out.println("\n----------------------------");
-
         System.out.println("\n2. Print duplicates characters from string:");
-        printDuplicateCharactersFromString(string);
+        printDuplicateCharactersFromString("java");
 
         System.out.println("\n------------------------------");
         System.out.println("\n3. Check if string are anagrams:");
-        System.out.println("Enter string one:");
-        String stringOne = scanner.next();
-        System.out.println("Enter string two:");
-        String stringTwo = scanner.next();
+        String stringOne = "java";
+        String stringTwo = "ajva";
         checkIfTwoStringsAreAnagrams(stringOne, stringTwo);
+
+        System.out.println("\n------------------------------");
+        System.out.println("\n4. Find all permutations of a string:");
+        findAllPermutationsOfAString("ABC", "");
+
+        System.out.println("\n\n-------------------------------");
+        System.out.println("\n5. Check if a string contains only digits:");
+        isDigitOnly("123java");
     }
 
     private static void reverseGivenString(String string) {
@@ -89,7 +89,7 @@ public class StringManipulation {
         }
 
         //Check if the two string are equals or not.
-        for (int i = 0; i < stringOneChars.length;i++) {
+        for (int i = 0; i < stringOneChars.length; i++) {
             if (stringOneChars[i] != stringTwoChars[i]) {
                 System.out.println("The strings are not anagarams!");
                 return;
@@ -97,5 +97,34 @@ public class StringManipulation {
         }
 
         System.out.println("The strings are anagrams!");
+    }
+
+    private static void findAllPermutationsOfAString(String string, String permutation) {
+        if (string.length() == 0) {
+            System.out.print(permutation + ", ");
+            return;
+        }
+
+        for (int i = 0; i < string.length(); i++) {
+            char toAppendToPermutation = string.charAt(i);
+            String remaining = string.substring(0, i) + string.substring(i + 1);
+
+            findAllPermutationsOfAString(remaining, permutation + toAppendToPermutation);
+        }
+    }
+
+    private static void isDigitOnly(final String string) {
+        if (string.isEmpty()) {
+            System.out.println("The string is empty!");
+            return;
+        }
+
+        for (int i = 0; i < string.length(); i++) {
+            if (!Character.isDigit(string.charAt(i))) {
+                System.out.println("The string '" + string + "' doesn't contains only digits.");
+                return;
+            }
+        }
+        System.out.println("The string '" + string + "' contains digits only.");
     }
 }
