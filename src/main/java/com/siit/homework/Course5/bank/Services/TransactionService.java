@@ -54,7 +54,7 @@ public class TransactionService {
                 int atmOptionCounter = 0;
                 while (atmOptionCounter < 5) {
                     System.out.println("Enter the operation you want to do:");
-                    System.out.println("1 - Deposit money; 2 - Interogate sold; 3 - Change pin; 4 - Withdraw Money; 5 - Exit");
+                    System.out.println("1 - Deposit money; 2 - Interogare sold; 3 - Change pin; 4 - Withdraw Money; 5 - Exit");
                     int atmOption = scanner.nextInt();
                     atmOptionCounter = atmOption;
 
