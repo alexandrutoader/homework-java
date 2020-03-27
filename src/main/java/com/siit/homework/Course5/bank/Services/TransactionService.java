@@ -85,10 +85,11 @@ public class TransactionService {
                     if (atmOption == 4) {
                         System.out.println("Enter the amount you want to withdraw:");
                         int amountWithdraw = scanner.nextInt();
-                        bankAccount.withdrawMoney(amountWithdraw);
-
-                        long money = bankAccount.getBalance();
-                        System.out.println("Sold after withdraw = " + money + "\n");
+                        boolean isWithdraw = bankAccount.withdrawMoney(amountWithdraw);
+                        if (isWithdraw) {
+                            long money = bankAccount.getBalance();
+                            System.out.println("Sold after withdraw = " + money + "\n");
+                        }
                     }
 
                     if (atmOption == 5) {

@@ -26,16 +26,19 @@ public class BankAccount {
         this.balance = this.balance + amount;
     }
 
-    public void withdrawMoney(long amount) {
+    public boolean withdrawMoney(long amount) {
         if (amount < 0) {
             System.out.println("The amount should be greater than 0!");
+            return false;
         }
 
         if (this.balance < amount) {
             System.out.println("Not enough money for this operation!");
+            return false;
         }
 
         this.balance = this.balance - amount;
+        return true;
     }
 
     public void attachCard(Card card) {
