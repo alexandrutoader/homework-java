@@ -1,15 +1,16 @@
 package com.siit.homework.Course5.bank.Entity;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BankAccount {
     private String iban;
-    private long balance;
+    private BigDecimal balance;
     private String ownerName;
     private List<Card> attachedCardNumber = new ArrayList<Card>();
 
-    public BankAccount(String iban, Long balance, String ownerName) {
+    public BankAccount(String iban, BigDecimal balance, String ownerName) {
         this.iban = iban;
         this.balance = balance;
         this.ownerName = ownerName;
@@ -18,26 +19,30 @@ public class BankAccount {
     public BankAccount() {
     }
 
-    public void addMoney(long amount) throws Exception {
-        if (amount < 0) {
+    public void addMoney(BigDecimal amount) throws Exception {
+        BigDecimal amountDecimal = new BigDecimal(String.valueOf(amount));
+        if (amountDecimal.compareTo(BigDecimal.ZERO) < 0) {
             throw new Exception("The amount should be greater than 0!");
         }
+        BigDecimal currentAmount = this.balance;
 
-        this.balance = this.balance + amount;
+        this.balance = currentAmount.add(amountDecimal);
     }
 
-    public boolean withdrawMoney(long amount) {
-        if (amount < 0) {
+    public boolean withdrawMoney(BigDecimal amount) {
+        BigDecimal amountDecimal = new BigDecimal(String.valueOf(amount));
+        BigDecimal currentBalance = new BigDecimal(String.valueOf(this.balance));
+        if (amountDecimal.compareTo(BigDecimal.ZERO) < 0) {
             System.out.println("The amount should be greater than 0!");
             return false;
         }
 
-        if (this.balance < amount) {
+        if (amountDecimal.compareTo(currentBalance) > 0) {
             System.out.println("Not enough money for this operation!");
             return false;
         }
 
-        this.balance = this.balance - amount;
+        this.balance = currentBalance.subtract(amountDecimal);
         return true;
     }
 
@@ -53,12 +58,13 @@ public class BankAccount {
         this.iban = iban;
     }
 
-    public long getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(long balance) {
+    public BankAccount setBalance(BigDecimal balance) {
         this.balance = balance;
+        return this;
     }
 
     public List<Card> getAttachedCardNumber() {
@@ -69,7 +75,7 @@ public class BankAccount {
         this.attachedCardNumber = attachedCardNumber;
     }
 
-    public void addBankAccount(String iban, Long balance, String ownerName) {
+    public void addBankAccount(String iban, BigDecimal balance, String ownerName) {
         this.iban = iban;
         this.balance = balance;
         this.ownerName = ownerName;

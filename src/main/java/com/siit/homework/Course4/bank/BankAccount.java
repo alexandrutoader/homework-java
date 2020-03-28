@@ -1,11 +1,12 @@
 package com.siit.homework.Course4.bank;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BankAccount {
     private String iban;
-    private long balance;
+    private BigDecimal balance;
     private List<Card> attachedCardNumber;
 
     public BankAccount(String iban) {
@@ -13,24 +14,31 @@ public class BankAccount {
         this.attachedCardNumber = new ArrayList<Card>();
     }
 
-    public void addMoney(long amount) throws Exception {
-        if (amount < 0) {
+    public void addMoney(BigDecimal amount) throws Exception {
+        BigDecimal amountDecimal = new BigDecimal(String.valueOf(amount));
+        if (amountDecimal.compareTo(BigDecimal.ZERO) < 0) {
             throw new Exception("The amount should be greater than 0!");
         }
 
-        this.balance = this.balance + amount;
+        if (null != this.balance) {
+            BigDecimal currentAmount = this.balance;
+            this.balance = amountDecimal.add(currentAmount);
+        }
+        this.balance = amountDecimal;
     }
 
-    public void withdrawMoney(long amount) throws Exception {
-        if (amount < 0) {
+    public void withdrawMoney(BigDecimal amount) throws Exception {
+        BigDecimal amountDecimal = new BigDecimal(String.valueOf(amount));
+        BigDecimal currentBalance = new BigDecimal(String.valueOf(this.balance));
+        if (amountDecimal.compareTo(BigDecimal.ZERO) < 0) {
             throw new Exception("The amount should be greater than 0!");
         }
 
-        if (this.balance < amount) {
+        if (amountDecimal.compareTo(currentBalance) > 0) {
             throw new Exception("Not enough money for this operation!");
         }
 
-        this.balance = this.balance - amount;
+        this.balance = currentBalance.subtract(amountDecimal);
     }
 
     public void attachCard(Card card) {
@@ -45,12 +53,13 @@ public class BankAccount {
         this.iban = iban;
     }
 
-    public long getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(long balance) {
+    public BankAccount setBalance(BigDecimal balance) {
         this.balance = balance;
+        return this;
     }
 
     public List<Card> getAttachedCardNumber() {

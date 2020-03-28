@@ -1,5 +1,6 @@
 package com.siit.homework.Course4.bank;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,14 +8,14 @@ import java.util.List;
 
 public class Pos {
     private List<BankAccount> bankAccounts;
-    private long amount;
+    private BigDecimal amount;
 
     public void addKnownBankAccounts(BankAccount bankAccount) {
         this.bankAccounts = new ArrayList<>();
         this.bankAccounts.add(bankAccount);
     }
 
-    public String pay(long amount,Card card) throws Exception {
+    public String pay(BigDecimal amount, Card card) throws Exception {
         this.amount = amount;
         String timeStamp = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -36,11 +37,12 @@ public class Pos {
         return "Thank you for your payment! Please take your receipt!";
     }
 
-    public long getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(long amount) {
+    public Pos setAmount(BigDecimal amount) {
         this.amount = amount;
+        return this;
     }
 }

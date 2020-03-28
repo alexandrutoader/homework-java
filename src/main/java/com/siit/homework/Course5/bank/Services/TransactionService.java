@@ -6,6 +6,7 @@ import com.siit.homework.Course5.bank.Entity.Pos;
 import com.siit.homework.Course5.bank.Entity.User;
 import com.siit.homework.Course5.bank.Repository.BankAccountRepository;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class TransactionService {
         User customer = new User();
         Pos pos = new Pos();
         card.addCard("15-03-2023 15:00:00", "Andrei Alexandru", 123456789012L, 1234);
-        account.addBankAccount("ROINGB00000000000000", 700L, "Andrei Alexandru");
+        account.addBankAccount("ROINGB00000000000000", new BigDecimal(700), "Andrei Alexandru");
         account.attachCard(card);
         customer.addBankAccount(account);
         customer.addCard(card);
@@ -60,8 +61,8 @@ public class TransactionService {
 
                     if (atmOption == 1) {
                         System.out.println("Enter the amount you want to deposit:");
-                        int deposit = scanner.nextInt();
-                        while (deposit < 0) {
+                        BigDecimal deposit = scanner.nextBigDecimal();
+                        while (deposit.compareTo(BigDecimal.ZERO) < 0) {
                             System.out.println("Please enter a deposit greater than 0!");
                             int depositRetry = scanner.nextInt();
                             if (depositRetry > 0) {
@@ -84,10 +85,10 @@ public class TransactionService {
 
                     if (atmOption == 4) {
                         System.out.println("Enter the amount you want to withdraw:");
-                        int amountWithdraw = scanner.nextInt();
+                        BigDecimal amountWithdraw = scanner.nextBigDecimal();
                         boolean isWithdraw = bankAccount.withdrawMoney(amountWithdraw);
                         if (isWithdraw) {
-                            long money = bankAccount.getBalance();
+                            BigDecimal money = bankAccount.getBalance();
                             System.out.println("Sold after withdraw = " + money + "\n");
                         }
                     }

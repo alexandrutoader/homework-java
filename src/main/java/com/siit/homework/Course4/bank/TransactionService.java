@@ -1,5 +1,7 @@
 package com.siit.homework.Course4.bank;
 
+import java.math.BigDecimal;
+
 public class TransactionService {
     public static void main(String[] args) throws Exception {
         String ownerName = "Andrei Alexandru";
@@ -16,15 +18,15 @@ public class TransactionService {
         try {
             //Action for add money on customer account.
             for (BankAccount customerAccount: customer.getBankAccounts()) {
-                customerAccount.addMoney(700);
+                customerAccount.addMoney(new BigDecimal("700"));
                 System.out.println("Card amount: " + customerAccount.getBalance());
             }
 
             //Action for withdraw money from customer account.
             for (BankAccount customerAccount: customer.getBankAccounts()) {
-                customerAccount.withdrawMoney(200);
+                customerAccount.withdrawMoney(new BigDecimal("200"));
 
-                long money = customerAccount.getBalance();
+                BigDecimal money = customerAccount.getBalance();
                 System.out.println("Sold after withdraw = " + money + "\n");
             }
 
@@ -32,12 +34,12 @@ public class TransactionService {
             Pos pos = new Pos();
             pos.addKnownBankAccounts(account);
             System.out.println("Pay at pos:");
-            String receipt = pos.pay(380,card);
+            String receipt = pos.pay(new BigDecimal("453.29"),card);
             System.out.println(pos.getAmount() + " payed at pos.");
             System.out.println(receipt + "\n");
 
             for (BankAccount customerAccount: customer.getBankAccounts()) {
-                long money = customerAccount.getBalance();
+                BigDecimal money = customerAccount.getBalance();
 
                 System.out.println("Sold after pay = " + money);
             }
