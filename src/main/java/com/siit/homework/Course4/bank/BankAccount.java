@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BankAccount {
     private String iban;
-    private BigDecimal balance;
+    private BigDecimal balance = new BigDecimal("0");
     private List<Card> attachedCardNumber;
 
     public BankAccount(String iban) {
@@ -14,7 +14,11 @@ public class BankAccount {
         this.attachedCardNumber = new ArrayList<Card>();
     }
 
-    public void addMoney(BigDecimal amount) throws Exception {
+    public BigDecimal addMoney(BigDecimal amount) throws Exception {
+        if (amount == null) {
+            throw new Exception("The provided amount is null!");
+        }
+
         BigDecimal amountDecimal = new BigDecimal(String.valueOf(amount));
         if (amountDecimal.compareTo(BigDecimal.ZERO) < 0) {
             throw new Exception("The amount should be greater than 0!");
@@ -24,10 +28,14 @@ public class BankAccount {
             BigDecimal currentAmount = this.balance;
             this.balance = amountDecimal.add(currentAmount);
         }
-        this.balance = amountDecimal;
+        return this.balance = amountDecimal;
     }
 
-    public void withdrawMoney(BigDecimal amount) throws Exception {
+    public BigDecimal withdrawMoney(BigDecimal amount) throws Exception {
+        if (amount == null) {
+            throw new Exception("The provided amount is null!");
+        }
+
         BigDecimal amountDecimal = new BigDecimal(String.valueOf(amount));
         BigDecimal currentBalance = new BigDecimal(String.valueOf(this.balance));
         if (amountDecimal.compareTo(BigDecimal.ZERO) < 0) {
@@ -38,7 +46,7 @@ public class BankAccount {
             throw new Exception("Not enough money for this operation!");
         }
 
-        this.balance = currentBalance.subtract(amountDecimal);
+        return this.balance = currentBalance.subtract(amountDecimal);
     }
 
     public void attachCard(Card card) {
