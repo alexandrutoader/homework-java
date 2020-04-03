@@ -2,11 +2,14 @@ package com.siit.homework.course6;
 
 import lombok.AllArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 public class StringManipulation {
     final static int MAX_CHAR = 256;
 
-     public String reverseGivenString(String string) {
+    public String reverseGivenString(String string) {
         int i;
         StringBuilder reversed = new StringBuilder();
         char[] character = string.toCharArray();
@@ -18,12 +21,12 @@ public class StringManipulation {
         System.out.println("Initial initialString: " + string);
         System.out.println("String reversed: " + reversed);
         return reversed.toString();
-     }
+    }
 
-     public String printDuplicateCharactersFromString(String string) {
-         if (null == string) {
-             return null;
-         }
+    public String printDuplicateCharactersFromString(String string) {
+        if (null == string) {
+            return null;
+        }
         int i;
         int j;
         StringBuilder duplicateCharacters = new StringBuilder();
@@ -43,13 +46,16 @@ public class StringManipulation {
         return duplicateCharacters.toString().trim();
     }
 
-    void checkIfTwoStringsAreAnagrams(String stringOne, String stringTwo) {
+    public String checkIfTwoStringsAreAnagrams(String stringOne, String stringTwo) {
+        if (stringOne == null || stringTwo == null) {
+            return null;
+        }
         char[] stringOneChars = stringOne.toCharArray();
         char[] stringTwoChars = stringTwo.toCharArray();
 
         if (stringOneChars.length != stringTwoChars.length) {
             System.out.println("The strings are not anagrams!");
-            return;
+            return "The strings are not anagrams!";
         }
 
         //Sort stringOneChars
@@ -77,20 +83,20 @@ public class StringManipulation {
         //Check if the two string are equals or not.
         for (int i = 0; i < stringOneChars.length; i++) {
             if (stringOneChars[i] != stringTwoChars[i]) {
-                System.out.println("The strings are not anagarams!");
-                return;
+                System.out.println("The strings are not anagrams!");
+                return "The strings are not anagrams!";
             }
         }
 
         System.out.println("First string: " + stringOne);
         System.out.println("Second string: " + stringTwo);
         System.out.println("The strings are anagrams!");
+        return "The strings are anagrams!";
     }
 
-    void findAllPermutationsOfAString(String string, String permutation) {
+    public void findAllPermutationsOfAString(String string, String permutation) {
         if (string.length() == 0) {
             System.out.print(permutation + ", ");
-            return;
         }
 
         for (int i = 0; i < string.length(); i++) {
@@ -101,25 +107,38 @@ public class StringManipulation {
         }
     }
 
-    void isDigitOnly(final String string) {
+    public String isDigitOnly(String string) {
+        if (null == string) {
+             return null;
+        }
         if (string.isEmpty()) {
             System.out.println("The string is empty!");
-            return;
+            return "The string is empty!";
         }
 
         for (int i = 0; i < string.length(); i++) {
             if (!Character.isDigit(string.charAt(i))) {
                 System.out.println("The string '" + string + "' doesn't contains only digits.");
-                return;
+                return "The string '" + string + "' doesn't contains only digits.";
             }
         }
         System.out.println("The string '" + string + "' contains digits only.");
+        return "The string '" + string + "' contains digits only.";
     }
 
-    void printNumberOfVowelsAndConsonants(String string) {
+    public List<Integer> printNumberOfVowelsAndConsonants(String string) {
         int i;
         int vowels = 0;
         int consonants = 0;
+        List<Integer>stringElements = new ArrayList<>();
+
+        if (string == null) {
+            return  null;
+        }
+
+        if (string.isEmpty()) {
+            return  stringElements;
+        }
         string = string.toLowerCase();
 
         for (i = 0; i < string.length(); i++) {
@@ -130,10 +149,12 @@ public class StringManipulation {
                 consonants++;
             }
         }
-
         System.out.println("\nThe number of vowels and consonants for '" + string + "' are:");
         System.out.println("Vowels: " + vowels);
         System.out.println("Consonants: " + consonants);
+        stringElements.add(vowels);
+        stringElements.add(consonants);
+        return stringElements;
     }
 
     void printTheOccurenceOfAGivenString(String string) {
