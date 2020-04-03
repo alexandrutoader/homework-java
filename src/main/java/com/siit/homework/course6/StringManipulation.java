@@ -3,6 +3,7 @@ package com.siit.homework.course6;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @AllArgsConstructor
@@ -157,8 +158,17 @@ public class StringManipulation {
         return stringElements;
     }
 
-    void printTheOccurenceOfAGivenString(String string) {
+    public HashMap<Character, Integer> printTheOccurenceOfAGivenString(String string) {
+        HashMap<Character, Integer> map = new HashMap<>();
         int[] count = new int[MAX_CHAR];
+
+        if (string == null) {
+            return null;
+        }
+
+        if (string.isEmpty()) {
+            return map;
+        }
         int stringLength = string.length();
 
         for (int i = 0; i < stringLength; i++) {
@@ -178,11 +188,20 @@ public class StringManipulation {
             if (find == 1) {
                 System.out.println("The occurence number for '" +
                         string.charAt(i) + "' is: " + count[string.charAt(i)]);
+                map.put(string.charAt(i), count[string.charAt(i)]);
             }
         }
+        return map;
     }
 
-    void findFirstNonRepeatingCharacter(String string) {
+    public String findFirstNonRepeatingCharacter(String string) {
+        if (null == string) {
+            return "";
+        }
+
+        if (string.isEmpty()) {
+            return "";
+        }
         System.out.println("The given string is: " + string);
         for (int i = 0; i < string.length(); i++) {
             boolean unique = true;
@@ -194,15 +213,24 @@ public class StringManipulation {
             }
             if (unique) {
                 System.out.println("The first non repeated character in string is: " + string.charAt(i));
-                break;
+                return "The first non repeated character in string is: " + string.charAt(i);
             }
         }
+        return "";
     }
 
-    void printStringToInt(String string) {
+    public Number printStringToInt(String string) {
         int i = 0;
         int number = 0;
         boolean isNegative = false;
+
+        if (null == string) {
+            return null;
+        }
+
+        if (string.isEmpty()) {
+            return 0;
+        }
 
         if (string.charAt(0) == '-') {
             isNegative = true;
@@ -219,9 +247,13 @@ public class StringManipulation {
 
         System.out.println("Given string: " + string);
         System.out.println("String to int: " + number);
+        return number;
     }
 
-    void reverseWordsFromSentence(String string) {
+    public String reverseWordsFromSentence(String string) {
+        if (null == string) {
+            return null;
+        }
         String[] sentence = string.split(" ");
         StringBuilder sentenceReversed = new StringBuilder();
         for (int i = sentence.length - 1; i >= 0; i--) {
@@ -229,26 +261,34 @@ public class StringManipulation {
         }
         System.out.println("Initial sentence: " + string);
         System.out.println("Reversed sentence: " + sentenceReversed.substring(0, sentenceReversed.length() - 1));
+        return "Reversed sentence: " + sentenceReversed.substring(0, sentenceReversed.length() - 1);
     }
 
-    void isRotation(String str1, String str2) {
+    public String isRotation(String str1, String str2) {
+        if ((null == str1) || (null == str2)) {
+            return null;
+        }
         if (str1.length() != str2.length()) {
             System.out.println("The input strings are: 1)" + str1 + " 2) " + str2);
             System.out.println("The two strings are not a rotation of each other.");
-            return;
+            return "The two strings are not a rotation of each other.";
         }
         String concatenated = str1 + str1;
 
         if (concatenated.contains(str2)) {
             System.out.println("The input strings are: 1)" + str1 + " 2) " + str2);
             System.out.println("The two strings are a rotation of each other.");
-            return;
+            return "The two strings are a rotation of each other.";
         }
         System.out.println("The input strings are: 1)" + str1 + " 2) " + str2);
         System.out.println("The two strings are not a rotation of each other.");
+        return "The two strings are not a rotation of each other.";
     }
 
-    void stringIsPalindrome(String string) {
+    public String stringIsPalindrome(String string) {
+        if (null == string) {
+            return null;
+        }
         String clean = string.replaceAll("\\s+", "").toLowerCase();
         int length = clean.length();
         int forward = 0;
@@ -259,14 +299,19 @@ public class StringManipulation {
             if (forwardChar != backwardChar) {
                 System.out.println("Input string: " + string);
                 System.out.println("The string is not a palindrome.");
-                return;
+                return "The string is not a palindrome.";
             }
         }
         System.out.println("Input string: " + string);
         System.out.println("The string is a palindrome.");
+        return "The string is a palindrome.";
     }
 
-    void longestSubstringWithoutRepeatingChars(String string) {
+    public String longestSubstringWithoutRepeatingChars(String string) {
+        if (null == string) {
+            return null;
+        }
+
         String stringWithoutRepeating = "";
         for (int i = 0; i < string.length(); i++) {
             if (stringWithoutRepeating.indexOf(string.charAt(i)) < 0) {
@@ -277,10 +322,14 @@ public class StringManipulation {
         System.out.println("Initial string: " + string);
         System.out.println("Word without reapeating: " + stringWithoutRepeating);
         System.out.println("The length of the longest substring is " + stringWithoutRepeating.length());
-        ;
+        return "The length of the longest substring is " + stringWithoutRepeating.length();
     }
 
-    void findLongestPalindromeSubstring(String str) {
+    public String findLongestPalindromeSubstring(String str) {
+        if (null == str) {
+            return null;
+        }
+
         int n = str.length();
         int longestSoFar = 0;
         int startIndex = 0;
@@ -288,7 +337,7 @@ public class StringManipulation {
 
         if (str.isEmpty()) {
             System.out.println("The input is empty!");
-            return;
+            return "The input is empty!";
         }
 
         boolean[][] palindrome = new boolean[n][n];
@@ -307,9 +356,17 @@ public class StringManipulation {
             }
         }
         System.out.println("The longest palindrome from string '" + str + "' is: " + str.substring(startIndex, endIndex + 1) + ".");
+        return "The longest palindrome from string '" + str + "' is: " + str.substring(startIndex, endIndex + 1) + ".";
     }
 
-    void removeDuplicateCharactersFromString(String str) {
+    public String removeDuplicateCharactersFromString(String str) {
+        if (null == str) {
+            return null;
+        }
+
+        if (str.isEmpty()) {
+            return "";
+        }
         char[] c = str.toCharArray();
         StringBuilder op = new StringBuilder();
 
@@ -319,12 +376,16 @@ public class StringManipulation {
         }
         System.out.println("Initial string: " + str);
         System.out.println("String after removing characters:" + op);
+        return "String after removing characters: " + op;
     }
 
-    void removeAGivenCharacterFromString(String str, char c) {
+    public String removeAGivenCharacterFromString(String str, char c) {
+        if (null == str) {
+            return null;
+        }
         if (str.isEmpty()) {
             System.out.println("The string is empty!");
-            return;
+            return "";
         }
 
         StringBuilder strBuilder = new StringBuilder();
@@ -338,10 +399,13 @@ public class StringManipulation {
 
         System.out.println("Initial string: " + str);
         System.out.println("String after removing duplicate chars: " + strBuilder.toString());
+        return "String after removing duplicate chars: " + strBuilder.toString();
     }
 
-    void findMostFrequentWordInArray(String str) {
-//        String str = "def def def abc abc";
+    public String findMostFrequentWordInArray(String str) {
+        if (str == null) {
+            return null;
+        }
         String[] words = str.split("\\s+");
         int finalCount = 0;
         int tempCount = 0;
@@ -362,5 +426,6 @@ public class StringManipulation {
         }
 
         System.out.println("Most frequent word in array: " + mostlyUsedWord);
+        return "Most frequent word in array: " + mostlyUsedWord;
     }
 }
