@@ -1,5 +1,5 @@
 package com.siit.bank;
-import com.siit.homework.Course4.bank.BankAccount;
+import com.siit.homework.course4.bank.BankAccount;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
