@@ -55,10 +55,37 @@ public class ShapeService {
         }
 
         System.out.println("\n================================================");
-        calculateAreaAndPerimeterOfRectangle(shapes);
+        calculateAreaAndPerimeterForShapes(shapes);
     }
 
-    private static void calculateAreaAndPerimeterOfRectangle(List<Shape> shapes) {
+    private static void calculateAreaAndPerimeterForShapes(List<Shape> shapes) {
+        int counter = 1;
+        for (Shape shape : shapes) {
+            if (shape instanceof Rectangle) {
+                System.out.println("\n" + counter + ") Rectangle area and perimeter for reference " + shape + ":"
+                        + "\nArea result: " + shape.area()
+                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+            }
+            if (shape instanceof Circle) {
+                System.out.println("\n" + counter + ") Circle area and perimeter for reference " + shape + ":"
+                        + "\nArea result: " + shape.area()
+                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+            }
+            if (shape instanceof Triangle) {
+                System.out.println("\n" + counter + ") Triangle area and perimeter for reference " + shape + ":"
+                        + "\nArea result: " + shape.area()
+                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+            }
+            if (shape instanceof Square) {
+                System.out.println("\n" + counter + ") Square area and perimeter for reference " + shape + ":"
+                        + "\nArea result: " + shape.area()
+                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+            }
+            counter++;
+        }
+    }
+
+    public void calculateAreaAndPerimeterForShapesTest(List<Shape> shapes) {
         int counter = 1;
         for (Shape shape : shapes) {
             if (shape instanceof Rectangle) {
