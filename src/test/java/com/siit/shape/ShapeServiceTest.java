@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeServiceTest {
-    private ShapeService ss;
+    private ShapeService sut;
 
     @Before
     public void setup() {
-        ss = new ShapeService();
+        sut = new ShapeService();
     }
 
     @Test
@@ -30,7 +30,7 @@ public class ShapeServiceTest {
         shapes.add(triangle);
         shapes.add(square);
 
-        ss.calculateAreaAndPerimeterForShapesTest(shapes);
+        sut.calculateAreaAndPerimeterForShapesTest(shapes);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class ShapeServiceTest {
         shapes.add(square);
         shapes.add(square2);
 
-        ss.calculateAreaAndPerimeterForShapesTest(shapes);
+        sut.calculateAreaAndPerimeterForShapesTest(shapes);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class ShapeServiceTest {
         Shape rectangle = new Rectangle(4.0, 6.0);
         shapes.add(rectangle);
 
-        ss.calculateAreaAndPerimeterForShapesTest(shapes);
+        sut.calculateAreaAndPerimeterForShapesTest(shapes);
     }
 
     @Test
@@ -93,6 +93,6 @@ public class ShapeServiceTest {
         shapes.add(square);
         shapes.add(square2);
 
-        ss.calculateAreaAndPerimeterForShapesTest(shapes);
+        sut.calculateAreaAndPerimeterForShapesTest(shapes);
     }
 }
