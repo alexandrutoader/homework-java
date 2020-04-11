@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
-public class Circle extends Shape {
+public class Circle implements Shape {
     private double radius;
     private double pi = Math.PI;
 

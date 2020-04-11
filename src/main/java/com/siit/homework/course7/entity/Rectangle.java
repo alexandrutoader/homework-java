@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
-public class Rectangle extends Shape {
+public class Rectangle implements Shape {
     private double width;
     private double length;
 

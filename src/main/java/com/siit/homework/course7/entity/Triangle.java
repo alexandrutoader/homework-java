@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
-public class Triangle extends Shape {
+public class Triangle implements Shape {
     private double a;
     private double b;
     private double c;
