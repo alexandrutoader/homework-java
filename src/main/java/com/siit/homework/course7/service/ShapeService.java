@@ -64,22 +64,26 @@ public class ShapeService {
             if (shape instanceof Rectangle) {
                 System.out.println("\n" + counter + ") Rectangle area and perimeter for reference " + shape + ":"
                         + "\nArea result: " + shape.area()
-                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+                        + "\nPerimeter result: " + shape.perimeter()
+                        + "\nTotal sum of area and perimeter: " + (shape.perimeter() + shape.area()) + "\n");
             }
             if (shape instanceof Circle) {
                 System.out.println("\n" + counter + ") Circle area and perimeter for reference " + shape + ":"
                         + "\nArea result: " + shape.area()
-                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+                        + "\nPerimeter result: " + shape.perimeter()
+                        + "\nTotal sum of area and perimeter: " + (shape.perimeter() + shape.area()) + "\n");
             }
             if (shape instanceof Triangle) {
                 System.out.println("\n" + counter + ") Triangle area and perimeter for reference " + shape + ":"
                         + "\nArea result: " + shape.area()
-                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+                        + "\nPerimeter result: " + shape.perimeter()
+                        + "\nTotal sum of area and perimeter: " + (shape.perimeter() + shape.area()) + "\n");
             }
             if (shape instanceof Square) {
                 System.out.println("\n" + counter + ") Square area and perimeter for reference " + shape + ":"
                         + "\nArea result: " + shape.area()
-                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+                        + "\nPerimeter result: " + shape.perimeter()
+                        + "\nTotal sum of area and perimeter: " + (shape.perimeter() + shape.area()) + "\n");
             }
             counter++;
         }
@@ -91,22 +95,26 @@ public class ShapeService {
             if (shape instanceof Rectangle) {
                 System.out.println("\n" + counter + ") Rectangle area and perimeter for reference " + shape + ":"
                         + "\nArea result: " + shape.area()
-                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+                        + "\nPerimeter result: " + shape.perimeter()
+                        + "\nTotal sum of area and perimeter: " + (shape.perimeter() + shape.area()) + "\n");
             }
             if (shape instanceof Circle) {
                 System.out.println("\n" + counter + ") Circle area and perimeter for reference " + shape + ":"
                         + "\nArea result: " + shape.area()
-                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+                        + "\nPerimeter result: " + shape.perimeter()
+                        + "\nTotal sum of area and perimeter: " + (shape.perimeter() + shape.area()) + "\n");
             }
             if (shape instanceof Triangle) {
                 System.out.println("\n" + counter + ") Triangle area and perimeter for reference " + shape + ":"
                         + "\nArea result: " + shape.area()
-                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+                        + "\nPerimeter result: " + shape.perimeter()
+                        + "\nTotal sum of area and perimeter: " + (shape.perimeter() + shape.area()) + "\n");
             }
             if (shape instanceof Square) {
                 System.out.println("\n" + counter + ") Square area and perimeter for reference " + shape + ":"
                         + "\nArea result: " + shape.area()
-                        + "\nPerimeter result: " + shape.perimeter() + "\n");
+                        + "\nPerimeter result: " + shape.perimeter()
+                        + "\nTotal sum of area and perimeter: " + (shape.perimeter() + shape.area()) + "\n");
             }
             counter++;
         }
