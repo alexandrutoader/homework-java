@@ -1,4 +1,4 @@
-package com.practice.headJavaExercises;
+package com.practice.headJavaExercises.movie;
 
 public class MovieTestDrive {
     public static void main(String[] args) {

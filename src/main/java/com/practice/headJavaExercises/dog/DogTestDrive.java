@@ -1,4 +1,4 @@
-package com.practice.headJavaExercises;
+package com.practice.headJavaExercises.dog;
 
 public class DogTestDrive {
 

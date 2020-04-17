@@ -1,4 +1,4 @@
-package com.practice.headJavaExercises;
+package com.practice.headJavaExercises.drive;
 
 public class Car {
     private int yearModel;
