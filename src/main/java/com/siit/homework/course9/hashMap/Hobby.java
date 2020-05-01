@@ -1,42 +1,24 @@
 package com.siit.homework.course9.hashMap;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.List;
 
+@Getter
+@Setter
+@ToString
 public class Hobby {
-    private String hobby;
     private int frequency;
+    private String name;
     private List<Address> addresses;
 
-    public Hobby(String hobby, int frequency, List<Address> addresses) {
-        this.hobby = hobby;
+    @Builder
+    public Hobby(int frequency, String name, List<Address> addresses) {
         this.frequency = frequency;
+        this.name = name;
         this.addresses = addresses;
-    }
-
-    public String getHobby() {
-        return hobby;
-    }
-
-    public Hobby setHobby(String hobby) {
-        this.hobby = hobby;
-        return this;
-    }
-
-    public int getFrequency() {
-        return frequency;
-    }
-
-    public Hobby setFrequency(int frequency) {
-        this.frequency = frequency;
-        return this;
-    }
-
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public Hobby setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
-        return this;
     }
 }

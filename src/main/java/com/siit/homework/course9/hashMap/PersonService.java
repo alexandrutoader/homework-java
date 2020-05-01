@@ -4,58 +4,84 @@ import java.util.*;
 
 public class PersonService {
     public static void main(String[] args) {
-        Person person1 = new Person("Alex", 20);
-        Person person2 = new Person("Andrei", 23);
-        Person person3 = new Person("Andreea", 21);
-        Person person4 = new Person("Alexandra", 32);
-        Person person5 = new Person("Mircea", 26);
-        Person person6 = new Person("Mircea", 26);
+        Person alex = Person.builder()
+                .age(20)
+                .name("Alex")
+                .build();
 
-        Comparator<Person> personComparatorAfterNameAndAge = new Comparator<Person>() {
+        Person bogdan = Person.builder()
+                .age(23)
+                .name("Bogdan")
+                .build();
 
-            @Override
-            public int compare(Person o1, Person o2) {
-                int i = o1.getName().compareTo(o2.getName());
-                if (i == 0) {
-                    if (o1.getAge() == o2.getAge()) {
-                        return 0;
-                    } else if (o1.getAge() < o2.getAge()) {
-                        return 1;
-                    } else {
-                        return -1;
-                    }
-                }
-                return i;
-            }
-        };
+        Person mircea = Person.builder()
+                .age(21)
+                .name("Mircea")
+                .build();
 
-        TreeSet<Person> persons = new TreeSet<>(personComparatorAfterNameAndAge);
-        persons.add(person1);
-        persons.add(person2);
-        persons.add(person3);
-        persons.add(person4);
-        persons.add(person5);
-        persons.add(person6);
+        Person florin = Person.builder()
+                .age(32)
+                .name("Florin")
+                .build();
 
-        Map<Person, List<Hobby>> personsMap = new HashMap<>();
+        List<Address> kayakingAddress1 = new ArrayList<>();
+        Address runningAddress1 = Address.builder()
+                .street("Brasov")
+                .country("Romania")
+                .build();
 
-        persons.forEach((person) -> {
-            if (person.getAge() > 25) {
-                Address address1 = new Address("Street Brasov", 20, "Romania");
-                Address address2 = new Address("Street Ranca", 15, "Romania");
-                Address address3 = new Address("Street Apuseni", 4, "Romania");
-                List<Address>addresses = new ArrayList<>();
-                addresses.add(address1);
-                addresses.add(address2);
-                addresses.add(address3);
-                List<Hobby> hobbies = new ArrayList<>();
-                hobbies.add(new Hobby("Running", 4, addresses));
-                person.setHobbies(hobbies);
-                personsMap.put(person, hobbies);
-            }
-            System.out.println(person.getName() + " " + person.getAge());
-        });
+        Address kayakingAddress2 = Address.builder()
+                .street("Buzau")
+                .country("Romania")
+                .build();
 
-        personsMap.forEach((key, value) -> System.out.println(key + ":" + value));
+        kayakingAddress1.add(runningAddress1);
+        kayakingAddress1.add(kayakingAddress2);
+
+        Hobby kayakingHobby = Hobby.builder()
+                .name("Kayaking")
+                .frequency(3)
+                .addresses(kayakingAddress1)
+                .build();
+
+        List<Address> swimmingAddress = new ArrayList<>();
+        Address swimAddress1 = Address.builder()
+                .street("Bd. Timisoara")
+                .country("Romania")
+                .build();
+
+        Address swimAddress2 = Address.builder()
+                .street("Bd. Tineretului")
+                .country("Romania")
+                .build();
+
+        swimmingAddress.add(swimAddress1);
+        swimmingAddress.add(swimAddress2);
+
+        Hobby swimHobby = Hobby.builder()
+                .name("Swim")
+                .frequency(4)
+                .addresses(swimmingAddress)
+                .build();
+
+        List<Hobby> alexHobbies = new ArrayList<>();
+        alexHobbies.add(kayakingHobby);
+        alexHobbies.add(swimHobby);
+
+        List<Hobby> mirceaHobbies = new ArrayList<>();
+        mirceaHobbies.add(swimHobby);
+        mirceaHobbies.add(swimHobby);
+
+        Map<Person, List<Hobby>> hashMap = new HashMap<>();
+
+        hashMap.put(alex, alexHobbies);
+        hashMap.put(mircea, mirceaHobbies);
+
+        Set set = hashMap.entrySet();
+
+        for (Object o : set) {
+            Map.Entry me = (Map.Entry) o;
+            System.out.println(me.getKey() + " " + me.getValue());
+        }
     }
 }
