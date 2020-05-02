@@ -24,8 +24,8 @@ public class PersonService {
                 .name("Florin")
                 .build();
 
-        List<Address> kayakingAddress1 = new ArrayList<>();
-        Address runningAddress1 = Address.builder()
+        List<Address> kayaking = new ArrayList<>();
+        Address kayakingAddress1 = Address.builder()
                 .street("Brasov")
                 .country("Romania")
                 .build();
@@ -35,13 +35,13 @@ public class PersonService {
                 .country("Romania")
                 .build();
 
-        kayakingAddress1.add(runningAddress1);
-        kayakingAddress1.add(kayakingAddress2);
+        kayaking.add(kayakingAddress1);
+        kayaking.add(kayakingAddress2);
 
         Hobby kayakingHobby = Hobby.builder()
                 .name("Kayaking")
                 .frequency(3)
-                .addresses(kayakingAddress1)
+                .addresses(kayaking)
                 .build();
 
         List<Address> swimmingAddress = new ArrayList<>();
