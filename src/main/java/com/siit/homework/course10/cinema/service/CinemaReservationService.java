@@ -72,7 +72,7 @@ public class CinemaReservationService {
         }
 
         if (seatRow.equals("G") || seatRow.equals("H") || seatRow.equals("I") || seatRow.equals("J")) {
-            return new BigDecimal(12);
+            return new BigDecimal(18);
         }
         return price;
     }
