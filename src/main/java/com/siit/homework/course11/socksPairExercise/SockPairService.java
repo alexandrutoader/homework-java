@@ -8,11 +8,12 @@ public class SockPairService {
         int pairs = 0;
         Set<Integer> socksWithoutPair = new HashSet<>();
 
-        for (int sock : socks)
+        for (int sock : socks) {
             if (!socksWithoutPair.add(sock)) {
                 pairs++;
                 socksWithoutPair.remove(sock);
             }
+        }
 
         socksWithoutPair.forEach(v ->
                 System.out.println("Socks without pair: " + v));
