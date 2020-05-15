@@ -55,11 +55,15 @@ public class Streams {
     }
 
     public static Integer sum(List<Integer> integers) {
-        throw new NotImplementedException();
+        return integers.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     public static List<Integer> skip(List<Integer> integers, Integer toSkip) {
-        throw new NotImplementedException();
+        return integers.stream()
+                .skip(toSkip)
+                .collect(Collectors.toList());
     }
 
     public static List<String> getFirstNames(List<String> names) {
