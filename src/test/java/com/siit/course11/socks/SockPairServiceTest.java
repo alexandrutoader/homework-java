@@ -1,4 +1,4 @@
-package com.siit.course11;
+package com.siit.course11.socks;
 
 import com.siit.homework.course11.socksPairExercise.SockPairService;
 import org.junit.Before;
