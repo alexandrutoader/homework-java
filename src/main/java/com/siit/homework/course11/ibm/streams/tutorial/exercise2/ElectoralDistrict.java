@@ -27,8 +27,8 @@ public enum ElectoralDistrict {
     public static Set<RegisteredVoter> votersIn(ElectoralDistrict district, Collection<RegisteredVoter> voters) {
         // [your code here]
 
-        return voters.stream()
-                .filter(voter -> voter.getElectorId().contains(district.getPrefix())).collect(Collectors.toUnmodifiableSet());
+        return Collections.unmodifiableSet(voters.stream()
+                .filter(voter -> voter.getElectorId().contains(district.getPrefix())).collect(Collectors.toUnmodifiableSet()));
     }
 
     /**
