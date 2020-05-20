@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-public class ioExercises {
+public class IoExercises {
     public static void main(String[] args) throws IOException {
         getAllFilesFromDirectory("./.idea");
         getSpecificFilesFromSpecifiedFolder("./.idea");
