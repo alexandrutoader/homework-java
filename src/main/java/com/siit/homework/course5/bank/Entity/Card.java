@@ -2,9 +2,11 @@ package com.siit.homework.course5.bank.Entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class Card {
     private String expirationDate;
     private String ownerName;

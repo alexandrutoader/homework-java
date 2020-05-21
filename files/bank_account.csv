@@ -1,0 +1,4 @@
+iban,balance,ownerName,expirationDate,ownerName,cardNumber,pinCode
+RO27RNCB1982192101,90000,Andrei Alexandru,15-03-2023 15:00:00,Andrei Alexandru,123456789012,1234
+RO22INGB1982192101,60000,Popescu Mihai,12-05-2023 12:00:00,Popescu Mihai,1234567890123,2345
+RO27RNCB1982192101,90000,Ionescu Ciprian,15-03-2023 15:00:00,Ionescu Ciprian,1234567896464,6789

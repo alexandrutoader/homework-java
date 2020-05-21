@@ -1,9 +1,16 @@
 package com.siit.homework.course5.bank.Entity;
 
+import lombok.*;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Builder
+@Setter
+@Getter
+@AllArgsConstructor
+@ToString
 public class BankAccount {
     private String iban;
     private BigDecimal balance;
@@ -50,42 +57,9 @@ public class BankAccount {
         this.attachedCardNumber.add(card);
     }
 
-    public String getIban() {
-        return iban;
-    }
-
-    public void setIban(String iban) {
-        this.iban = iban;
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public BankAccount setBalance(BigDecimal balance) {
-        this.balance = balance;
-        return this;
-    }
-
-    public List<Card> getAttachedCardNumber() {
-        return attachedCardNumber;
-    }
-
-    public void setAttachedCardNumber(List<Card> attachedCardNumber) {
-        this.attachedCardNumber = attachedCardNumber;
-    }
-
     public void addBankAccount(String iban, BigDecimal balance, String ownerName) {
         this.iban = iban;
         this.balance = balance;
-        this.ownerName = ownerName;
-    }
-
-    public String getOwnerName() {
-        return ownerName;
-    }
-
-    public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
     }
 }
