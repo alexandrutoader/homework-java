@@ -7,6 +7,11 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Ticket {
-    private TicketType type;
+public class Attendee {
+    private TicketType ticketType;
+
+    @Override
+    public String toString() {
+        return "Ticket type = " + ticketType;
+    }
 }
