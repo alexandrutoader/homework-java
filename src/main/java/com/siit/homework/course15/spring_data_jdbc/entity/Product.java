@@ -31,9 +31,4 @@ public class Product {
 
     @Column(name = "MSRP")
     private BigDecimal msrp;
-
-    @ToString.Exclude
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "productCode", referencedColumnName = "productCode")
-    private OrderDetails orderDetails;
 }
