@@ -33,6 +33,7 @@ public class OrderService {
                 .requiredDate("2020-06-19")
                 .shippedDate("2020-06-19")
                 .status("In Process")
+                .customerNumber(119)
                 .build();
 
         orderService.create(order1);

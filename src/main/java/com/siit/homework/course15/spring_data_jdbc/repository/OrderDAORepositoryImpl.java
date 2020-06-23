@@ -54,7 +54,7 @@ public class OrderDAORepositoryImpl implements OrderDAORepository {
     public List<Order> findByOrderId(int orderId) {
         String query = "select * " +
                 "from orders o " +
-                "where o.orderId = ?";
+                "where o.orderNumber = ?";
 
         PreparedStatement ps = getPreparedStatement(query);
         List<Order> orders = new ArrayList<>();

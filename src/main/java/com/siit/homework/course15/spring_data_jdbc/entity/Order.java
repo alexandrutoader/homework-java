@@ -26,8 +26,5 @@ public class Order {
 
     private String comments;
 
-    @ToString.Exclude
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customerNumber", referencedColumnName = "customerNumber")
     private int customerNumber;
 }
