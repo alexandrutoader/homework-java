@@ -28,6 +28,7 @@ public class OrderService {
         OrderService orderService = new OrderService(new OrderDAORepositoryImpl());
 
         Order order1 = Order.builder()
+                .orderNumber(10426)
                 .orderDate("2020-06-19")
                 .requiredDate("2020-06-19")
                 .shippedDate("2020-06-19")
@@ -36,9 +37,9 @@ public class OrderService {
 
         orderService.create(order1);
 
-        orderService.findByOrderId(10263)
+        orderService.findByOrderId(10426)
                 .forEach(order -> System.out.println("order = " + order));
 
-        orderService.delete(10263);
+        orderService.delete(10426);
     }
 }

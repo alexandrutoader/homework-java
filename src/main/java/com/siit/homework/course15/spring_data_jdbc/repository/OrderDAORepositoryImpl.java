@@ -26,17 +26,18 @@ public class OrderDAORepositoryImpl implements OrderDAORepository {
 
     @Override
     public void save(Order order) {
-        String query = "INSERT INTO orders( orderDate, requiredDate, shippedDate, status, comments, customerNumber) VALUES (?, ?, ?,?,?, ?)";
+        String query = "INSERT INTO orders(orderNumber, orderDate, requiredDate, shippedDate, status, comments, customerNumber) VALUES (?,?, ?, ?,?,?, ?)";
         PreparedStatement preparedStatement = getPreparedStatement(query);
 
         int rowsAffected = 0;
         try {
-            preparedStatement.setDate(1, Date.valueOf(order.getOrderDate()));
-            preparedStatement.setDate(2, Date.valueOf(order.getRequiredDate()));
-            preparedStatement.setDate(3, Date.valueOf(order.getShippedDate()));
-            preparedStatement.setString(4, order.getStatus());
-            preparedStatement.setString(5, order.getComments());
-            preparedStatement.setInt(6, order.getCustomerNumber());
+            preparedStatement.setInt(1, order.getOrderNumber());
+            preparedStatement.setDate(2, Date.valueOf(order.getOrderDate()));
+            preparedStatement.setDate(3, Date.valueOf(order.getRequiredDate()));
+            preparedStatement.setDate(4, Date.valueOf(order.getShippedDate()));
+            preparedStatement.setString(5, order.getStatus());
+            preparedStatement.setString(6, order.getComments());
+            preparedStatement.setInt(7, order.getCustomerNumber());
             rowsAffected = preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
