@@ -24,6 +24,10 @@ public class OrderService {
         return orderDAORepository.findByOrderId(orderId);
     }
 
+    public void update(Order order) {
+        orderDAORepository.update(order);
+    }
+
     public static void main(String... args) {
         OrderService orderService = new OrderService(new OrderDAORepositoryImpl());
 
@@ -38,6 +42,14 @@ public class OrderService {
 
         orderService.create(order1);
 
+        orderService.findByOrderId(10426)
+                .forEach(order -> System.out.println("order = " + order));
+
+        order1.setComments("Customer credit limit exceeded. Will ship when a payment is received.");
+        order1.setStatus("On hold");
+
+        orderService.update(order1);
+        System.out.println("===========Update===========");
         orderService.findByOrderId(10426)
                 .forEach(order -> System.out.println("order = " + order));
 

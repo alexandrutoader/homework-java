@@ -26,7 +26,7 @@ public class OrderDAORepositoryImpl implements OrderDAORepository {
 
     @Override
     public void save(Order order) {
-        String query = "INSERT INTO orders(orderNumber, orderDate, requiredDate, shippedDate, status, comments, customerNumber) VALUES (?,?, ?, ?,?,?, ?)";
+        String query = "INSERT INTO orders(orderNumber, orderDate, requiredDate, status, comments, customerNumber) VALUES (?,?, ?,?,?, ?)";
         PreparedStatement preparedStatement = getPreparedStatement(query);
 
         int rowsAffected = 0;
@@ -34,10 +34,10 @@ public class OrderDAORepositoryImpl implements OrderDAORepository {
             preparedStatement.setInt(1, order.getOrderNumber());
             preparedStatement.setDate(2, Date.valueOf(order.getOrderDate()));
             preparedStatement.setDate(3, Date.valueOf(order.getRequiredDate()));
-            preparedStatement.setDate(4, Date.valueOf(order.getShippedDate()));
-            preparedStatement.setString(5, order.getStatus());
-            preparedStatement.setString(6, order.getComments());
-            preparedStatement.setInt(7, order.getCustomerNumber());
+//            preparedStatement.setDate(4, Date.valueOf(order.getShippedDate()));
+            preparedStatement.setString(4, order.getStatus());
+            preparedStatement.setString(5, order.getComments());
+            preparedStatement.setInt(6, order.getCustomerNumber());
             rowsAffected = preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -92,16 +92,15 @@ public class OrderDAORepositoryImpl implements OrderDAORepository {
     public void update(Order order) {
         PreparedStatement preparedStatement = getPreparedStatement(
                 "UPDATE orders SET " +
-                        "orderDate = ?," +
-                        "requiredDate =?, " +
-                        "shippedDate = ?," +
-                        "status =?, " +
-                        "comments = ? " +
+                        "status = ?," +
+                        "comments =? " +
                         "WHERE orderNumber = ?");
         int rowsAffected = 0;
 
         try {
-            preparedStatement.setInt(7, order.getOrderNumber());
+            preparedStatement.setString(1, order.getStatus());
+            preparedStatement.setString(2, order.getComments());
+            preparedStatement.setInt(3, order.getOrderNumber());
 
             rowsAffected = preparedStatement.executeUpdate();
         } catch (SQLException e) {
