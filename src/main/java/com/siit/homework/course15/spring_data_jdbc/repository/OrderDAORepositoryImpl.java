@@ -34,7 +34,6 @@ public class OrderDAORepositoryImpl implements OrderDAORepository {
             preparedStatement.setInt(1, order.getOrderNumber());
             preparedStatement.setDate(2, Date.valueOf(order.getOrderDate()));
             preparedStatement.setDate(3, Date.valueOf(order.getRequiredDate()));
-//            preparedStatement.setDate(4, Date.valueOf(order.getShippedDate()));
             preparedStatement.setString(4, order.getStatus());
             preparedStatement.setString(5, order.getComments());
             preparedStatement.setInt(6, order.getCustomerNumber());
